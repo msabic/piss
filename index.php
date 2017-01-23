@@ -157,7 +157,7 @@ $razina=0;
     <div class="row">
       <div class="col-lg-6 col-sm-9 recent-view">
         <h3>O nama</h3>
-        <p>Mi smo studenti prve godine diplomskog studija Fakulteta strojarstva i računarstva u Mostaru. Ovu stranicu smo izradili kao zadatak iz kolegija projektiranje informacijskih sustava. Zadatak nije bio lak zato smo uložili mnogo truda, znoja i kave da ga završimo u roku. Uz rad na ovom projektu mnogo smo naučili o iznajmljivanju kuća odnosno da nikad više ne radimo stranicu za iznajmljivanje kuća.<br><a href="about.php">Saznaj više</a></p>
+        <p>Mi smo studenti prve godine diplomskog studija Fakulteta strojarstva i računarstva u Mostaru. Ovu stranicu smo izradili kao zadatak iz kolegija projektiranje informacijskih sustava. Zadatak nije bio lak zato smo uložili mnogo truda, znoja i kave da ga završimo u roku. Uz rad na ovom projektu mnogo smo naučili o iznajmljivanju kuća odnosno da nikad više ne radimo stranicu za iznajmljivanje kuća...<br><a href="about.php">Saznaj više</a></p>
       
       </div>
       <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
