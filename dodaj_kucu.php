@@ -20,7 +20,7 @@ $br_katova=isset($_POST["br_katova"])? $_POST["br_katova"]:"";
 $br_kvadrata=isset($_POST["br_soba"])? $_POST["br_soba"]:"";
 $bazen=isset($_POST["bazen"])? $_POST["bazen"]:"";
 $form_message=isset($_POST["form_message"])? $_POST["form_message"]:"";
-$img=isset($_POST["img"])? $_POST["img"]:"";
+$img=$_FILES["img"]["size"]? addslashes(file_get_contents($_FILES["img"]["tmp_name"])) : NULL;
 
 
 
