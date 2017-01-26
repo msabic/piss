@@ -20,6 +20,7 @@
     echo '<form action="buysalerent.php" method="GET">
     <input type="text" class="form-control" placeholder="Traži po nazivu grada" name="grad">
     
+          <div class="row">
           <div class="col-lg-12">
               <select class="form-control" name="cijena">
                 <option value="0">Cijena</option>
@@ -29,8 +30,9 @@
                 <option value="4">300,000 KM - više</option>
               </select>
           
-          <button class="btn btn-primary">Traži</button>
-</form>';?>
+          <button class="btn btn-primary">Traži</button></div></div>
+</form>
+';?>
   </div>
 
 
@@ -48,16 +50,13 @@
         $cijena = $row['cijena'];
         $slika = $row['slika']; 
 
-echo '<div class="row">
+echo '
                 <div class="col-lg-4 col-sm-5"><img class="img-responsive img-circle" src="data:image/jpeg;base64,'.base64_encode($slika).'"/></div>
                 <div class="col-lg-8 col-sm-7">
                   <h5><a href="property-detail.php">'.$naziv.'</a></h5>
                   <p class="price">'.$cijena.' KM</p> </div>
-              </div>
-
-
-</div>';}?>
-</div>
+              ';}?>
+</div></div>
 <div class="col-lg-9 col-sm-8">
 
 <div class="row">
@@ -184,7 +183,6 @@ echo '<div class="row">
 
 
 
-</div>
 </div>
 </div>
 </div>
