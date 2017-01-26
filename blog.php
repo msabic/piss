@@ -24,9 +24,10 @@
         $naziv = $row['naziv'];
         $opis = $row['opis'];
         $slika = $row['slika'];
+        
     
 		  echo '<div class="row">
-                    <div class="col-lg-4 col-sm-4 "><a href="blogdetail.php" class="thumbnail"><img src="images/blog/'. $slika .'.jpg" alt="blog title"></a></div>
+                    <div class="col-lg-4 col-sm-4 "><a href="blogdetail.php" class="thumbnail"><img src="data:image/jpeg;base64,'.base64_encode($slika).'"/></a></div>
                     <div class="col-lg-8 col-sm-8 ">
                     <h3><a href="blogdetail.php">'. $naziv .'</a></h3>                      
                     <p>'. $opis .'</p>
