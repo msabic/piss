@@ -81,38 +81,23 @@ $razina=0;
     <div class="searchbar">
       <div class="row">
         <div class="col-lg-6 col-sm-6">
-          <input type="text" class="form-control" placeholder="Unesi naziv grada">
+          <?php
+    echo '<form action="buysalerent.php" method="GET">
+    <input type="text" class="form-control" placeholder="Traži po nazivu grada" name="grad">
+    
           <div class="row">
-            <div class="col-lg-3 col-sm-3 ">
-              <select class="form-control">
-                <option>Sobe</option>
-                <option>1 soba</option>
-                <option>2 sobe</option>
-                <option>3 sobe</option>
-                <option>4 i više soba</option>
+          <div class="col-lg-12">
+              <select class="form-control" name="cijena">
+                <option value="0">Cijena</option>
+                <option value="1">0 KM - 200,000 KM</option>
+                <option value="2">200,000 KM - 250,000 KM</option>
+                <option value="3">250,000 KM - 300,000 KM</option>
+                <option value="4">300,000 KM - više</option>
               </select>
-            </div>
-            <div class="col-lg-3 col-sm-4">
-              <select class="form-control">
-                <option>Cijena</option>
-                <option>200kn - 500kn</option>
-                <option>500kn - 1000kn</option>
-                <option>1000kn - 2000kn</option>
-                <option>2000kn i više</option>
-              </select>
-            </div>
-            <div class="col-lg-3 col-sm-4">
-            <select class="form-control">
-                <option>Kvadratura</option>
-                <option>do 100</option>
-                <option>100-150</option>
-                <option>150 i više</option>
-              </select>
-              </div>
-              <div class="col-lg-3 col-sm-4">
-              <button class="btn btn-success"  onclick="window.location.href='buysalerent.php'">Traži</button>
-              </div>
-          </div>
+          
+          <button class="btn btn-primary">Traži</button></div></div>
+</form>
+';?>
           
           
         </div>
@@ -157,7 +142,7 @@ $razina=0;
                             
                           </div>
                           <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>
-                          <p class="price">'.$cijena.'</p>
+                          <p class="price">'.$cijena.' KM</p>
                           <div class="listing-detail"></div>
                           <a class="btn btn-primary" href="property-detail.php?id='.$id.'">Pogledaj detalje</a>
                         </div>';
@@ -174,7 +159,7 @@ $razina=0;
         <p>Mi smo studenti prve godine diplomskog studija Fakulteta strojarstva i računarstva u Mostaru. Ovu stranicu smo izradili kao zadatak iz kolegija projektiranje informacijskih sustava. Zadatak nije bio lak zato smo uložili mnogo truda, znoja i kave da ga završimo u roku. Uz rad na ovom projektu mnogo smo naučili o iznajmljivanju kuća odnosno da nikad više ne radimo stranicu za iznajmljivanje kuća...<br><a href="about.php">Saznaj više</a></p>
       
       </div>
-     
+
     </div>
   </div>
 </div>
