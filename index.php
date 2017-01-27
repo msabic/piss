@@ -139,17 +139,31 @@ $razina=0;
   <div class="properties-listing spacer"> <a href="buysalerent.php" class="pull-right viewall">Pogledaj cijelu ponudu</a>
     <h2>Istaknute nekretnine</h2>
     <div id="owl-example" class="owl-carousel">
-      <div class="properties">
-        <div class="image-holder"><img src="images/properties/1.jpg" class="img-responsive" alt="properties"/>
-          
-        </div>
-        <h4><a href="property-detail.php">Mijina vikendica</a></h4>
-        <p class="price">Cijena 5 kuna</p>
-        <div class="listing-detail"></div>
-        <a class="btn btn-primary" href="property-detail.php">Pogledaj detalje</a>
-      </div>
+
+    <?php
+      include ("Connect.php");
+      $query = "SELECT idnekretnina, grad, cijena, slika FROM `nekretnina` LIMIT 7";
+                $result = $con->query($query);
+                while($row = mysqli_fetch_array($result))
+                  {
+                      $id = $row['idnekretnina'];
+                      $naziv = $row['grad'];
+                      $cijena = $row['cijena'];
+                      $slika = $row['slika']; 
+
+                      echo '
+                        <div class="properties">
+                          <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
+                            
+                          </div>
+                          <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>
+                          <p class="price">'.$cijena.'</p>
+                          <div class="listing-detail"></div>
+                          <a class="btn btn-primary" href="property-detail.php?id='.$id.'">Pogledaj detalje</a>
+                        </div>';
+                  }
      
-        
+     ?>   
       
     </div>
   </div>
@@ -160,56 +174,7 @@ $razina=0;
         <p>Mi smo studenti prve godine diplomskog studija Fakulteta strojarstva i računarstva u Mostaru. Ovu stranicu smo izradili kao zadatak iz kolegija projektiranje informacijskih sustava. Zadatak nije bio lak zato smo uložili mnogo truda, znoja i kave da ga završimo u roku. Uz rad na ovom projektu mnogo smo naučili o iznajmljivanju kuća odnosno da nikad više ne radimo stranicu za iznajmljivanje kuća...<br><a href="about.php">Saznaj više</a></p>
       
       </div>
-      <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
-        <h3>Preporučene nekretnine</h3>
-        <div id="myCarousel" class="carousel slide">
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="3" class=""></li>
-          </ol>
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="row">
-                <div class="col-lg-4"><img src="images/properties/1.jpg" class="img-responsive" alt="properties"/></div>
-                <div class="col-lg-8">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p>
-                  <a href="property-detail.php" class="more">More Detail</a> </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-lg-4"><img src="images/properties/2.jpg" class="img-responsive" alt="properties"/></div>
-                <div class="col-lg-8">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p>
-                  <a href="property-detail.php" class="more">More Detail</a> </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-lg-4"><img src="images/properties/3.jpg" class="img-responsive" alt="properties"/></div>
-                <div class="col-lg-8">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p>
-                  <a href="property-detail.php" class="more">More Detail</a> </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-lg-4"><img src="images/properties/4.jpg" class="img-responsive" alt="properties"/></div>
-                <div class="col-lg-8">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p>
-                  <a href="property-detail.php" class="more">More Detail</a> </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
   </div>
 </div>

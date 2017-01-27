@@ -57,8 +57,15 @@
 </div>
 
 <div class="col-lg-9 col-sm-8 ">
+<?php
+include ("Connect.php");
+$query = "SELECT * FROM `nekretnina` where idnekretnina=".$_GET['id']." ";
+$result = $con->query($query);
+$row = mysqli_fetch_array($result);
 
-<h2>2 room and 1 kitchen apartment</h2>
+
+echo '<h2>'.$row['naziv'].'</h2>';
+?>
 <div class="row">
   <div class="col-lg-8">
   <div class="property-images">
