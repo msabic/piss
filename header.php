@@ -97,7 +97,7 @@ $razina=0;
                 <li><a href="buysalerent.php">Iznajmi</a></li>
               </ul> ';}
               else{
-                echo '<ul class="pull-right">
+                echo '<ul class="pull-right"><li><label>Za iznajmljivanje/dodavanje kuća potrebna je prijava!</label></li>
                 </ul>';
               };
     ?>
