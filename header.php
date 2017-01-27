@@ -1,3 +1,14 @@
+
+<?php
+if (isset($_COOKIE['uname'])){
+$prijavljen=true;
+$razina=$_COOKIE['razina'];
+}
+else {
+$prijavljen=false;
+$razina=0;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,11 +88,19 @@
 <!-- Header Starts -->
 <div class="header">
 <a href="index.php"><img src="images/logo1.png" alt="Realestate"></a>
-
+ <?php 
+    if(isset($_COOKIE['uname']))
+    {
+    echo'
               <ul class="pull-right">
                 <li><a href="dodaj.php">Dodaj</a></li>         
                 <li><a href="buysalerent.php">Iznajmi</a></li>
-              </ul>
+              </ul> ';}
+              else{
+                echo '<ul class="pull-right">
+                </ul>';
+              };
+    ?>
 </div>
 <!-- #Header Starts -->
 </div>
