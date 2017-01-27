@@ -25,11 +25,7 @@
 </div>
 </div>
 
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> origin/master
 <!-- banner -->
 
 
@@ -47,11 +43,6 @@
                 <input type="number" class="form-control" placeholder="Broj Soba" name="br_soba">
                 <label><input type="radio" name="bazen"> Bazen </label>
                 <textarea rows="6" class="form-control" placeholder="Opišite kuću" name="form_message"></textarea>
-                
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
 
   Odaberite slike: <input type="file" name="img" multiple >
