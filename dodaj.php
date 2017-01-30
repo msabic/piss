@@ -1,3 +1,13 @@
+<?php
+if (isset($_COOKIE['uname'])){
+$prijavljen=true;
+$razina=$_COOKIE['razina'];
+}
+else {
+$prijavljen=false;
+$razina=0;
+}
+?>
 <?php include'header.php';?>
 <link rel="stylesheet" href="assets/style.css"/>
 <script src="assets/upload.js"></script>

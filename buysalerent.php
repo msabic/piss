@@ -1,3 +1,13 @@
+<?php
+if (isset($_COOKIE['uname'])){
+$prijavljen=true;
+$razina=$_COOKIE['razina'];
+}
+else {
+$prijavljen=false;
+$razina=0;
+}
+?>
 <?php include'header.php';?>
 <!-- banner -->
 <div class="inside-banner">
@@ -42,19 +52,20 @@
 
 <?php
   include ("Connect.php");
-  $query = "SELECT idnekretnina, naziv, cijena, slika FROM `nekretnina` ORDER BY cijena DESC LIMIT 4 ";
+  $query = "SELECT idnekretnina, naziv, cijena, slika, naziv FROM `nekretnina` ORDER BY cijena DESC LIMIT 4 ";
   $result = $con->query($query);
   while($row = mysqli_fetch_array($result))
     {
         $id = $row['idnekretnina'];
         $naziv = $row['naziv'];
+        $n=$row['naziv'];
         $cijena = $row['cijena'];
         $slika = $row['slika']; 
 
 echo '
                 <div class="col-lg-4 col-sm-5"><img class="img-responsive img-circle" src="data:image/jpeg;base64,'.base64_encode($slika).'"/></div>
                 <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h5>
+                  <h5><a href="property-detail.php?id='.$id.'">'.$n.'</a></h5>
                   <p class="price">'.$cijena.' KM</p> </div>
               ';}?>
 </div></div>
@@ -89,12 +100,13 @@ echo '
             if($grad!="" && $cijena==0)
             {
 
-              $query = "SELECT idnekretnina, grad, cijena, slika FROM `nekretnina` WHERE grad = '$grad'";
+              $query = "SELECT idnekretnina, grad, cijena, slika, naziv FROM `nekretnina` WHERE grad = '$grad'";
               $result = $con->query($query);
           while($row = mysqli_fetch_array($result))
             {
                 $id = $row['idnekretnina'];
                 $naziv = $row['grad'];
+                $n=$row['naziv'];
                 $cijena = $row['cijena'];
                 $slika = $row['slika']; 
             echo '
@@ -102,7 +114,7 @@ echo '
               <div class="properties">
                 <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
                 </div>
-                <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>
+                <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                 <p class="price">Price: '.$cijena.' KM</p>
                 
                 <a class="btn btn-primary" href="property-detail.php?id='.$id.'">Detalji</a>
@@ -113,12 +125,13 @@ echo '
 
             else if($grad=="" && $cijena!=0)
             {
-              $query = "SELECT idnekretnina, grad, cijena, slika FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2'";
+              $query = "SELECT idnekretnina, grad, cijena, slika, naziv FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2'";
               $result = $con->query($query);
               while($row = mysqli_fetch_array($result))
                 {
                     $id = $row['idnekretnina'];
                     $naziv = $row['grad'];
+                    $n=$row['naziv'];
                     $cijena = $row['cijena'];
                     $slika = $row['slika']; 
                 echo '
@@ -126,7 +139,7 @@ echo '
               <div class="properties">
                 <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
                 </div>
-                <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>
+                <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                 <p class="price">Price: '.$cijena.' KM</p>
                 
                 <a class="btn btn-primary" href="property-detail.php?id='.$id.'">Detalji</a>
@@ -142,6 +155,7 @@ echo '
                     {
                         $id = $row['idnekretnina'];
                         $naziv = $row['grad'];
+                        $n=$row['naziv'];
                         $cijena = $row['cijena'];
                         $slika = $row['slika']; 
                     echo '
@@ -149,7 +163,7 @@ echo '
                   <div class="properties">
                     <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
                     </div>
-                    <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>
+                    <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                     <p class="price">Price: '.$cijena.' KM</p>
                     
                     <a class="btn btn-primary" href="property-detail.php?id='.$id.'">Detalji</a>
@@ -168,6 +182,7 @@ echo '
             {
                 $id = $row['idnekretnina'];
                 $naziv = $row['naziv'];
+                $n=$row['naziv'];
                 $cijena = $row['cijena'];
                 $slika = $row['slika']; 
             echo '
@@ -175,7 +190,7 @@ echo '
               <div class="properties">
                 <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
                 </div>
-                <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>
+                <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                 <p class="price">Price: '.$cijena.' KM</p>
                 
                 <a class="btn btn-primary" href="property-detail.php?id='.$id.'">Detalji</a>
