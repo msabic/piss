@@ -1,15 +1,4 @@
 
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
-  <script>
-
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-
-  </script>
 
 
 <?php include'header.php';?>
@@ -25,12 +14,16 @@
 <div class="spacer">
 <div class="row register">
 
-  <form action="sample.php" method="post">
-
-Start Date: <input type="text" name="startdate" id="datepicker"/>
-End Date: <input type="text" name="enddate" id="datepicker"/>
-<input type="submit" />
-</form>
+<?php
+  include ("Connect.php");
+  $query = "SELECT * FROM `nekretnina` where idnekretnina=6";
+  $result = $con->query($query);
+  for ($j=0; $j<1; ++$j)
+{
+    $row = mysql_fetch_row($result);
+     echo $row[1];
+}
+?>
 
 </div>
 </div>

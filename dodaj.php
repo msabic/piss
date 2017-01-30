@@ -55,7 +55,7 @@ $razina=0;
                 <textarea rows="6" class="form-control" placeholder="Opišite kuću" name="form_message"></textarea>
 
 
-  Odaberite slike: <input type="file" name="img" multiple >
+  Odaberite slike: <input type="file" name="img[]" multiple >
 
       <button type="submit" class="btn btn-success" name="Submit">Register</button></form>'?>
           
