@@ -18,23 +18,7 @@
 
 
 
-  include ("Connect.php");
-  $query = "SELECT * FROM `nekretnina` where idnekretnina=6";
-  $result = $con->query($query);
-  for ($j=0; $j<1; ++$j)
-{
-    $row = mysql_fetch_row($result);
-     echo $row[1];
-}
 
-$query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=5";
-  $result = $con->query($query);
-while($rez=$result->fetch_array())
-{
-	$slika=$rez['lokacija'];
-	
-
-}
 
 echo '
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>

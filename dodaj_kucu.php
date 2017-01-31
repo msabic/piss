@@ -26,6 +26,10 @@ $form_message=isset($_POST["form_message"])? $_POST["form_message"]:"";
 $id_korisnika=0;
 $id_nekretnina=0;
 $email=$_COOKIE['uname'];
+if($naziv!="" && $adresa!="" && $grad!="" && $kvadratura!="" && $cijena!="" && $br_katova!="" && $br_kvadrata!="" && $form_message!="")
+{
+	if((count($_FILES["img"]["tmp_name"])>5 && count($_FILES["img"]["tmp_name"]<20)))
+	{
 $qiii="SELECT * FROM korisnik WHERE email='$email'";
 $result=$con->query($qiii);
 while ($rez=$result->fetch_array()){
@@ -39,6 +43,7 @@ $result=$con->query($qiiii);
 while ($rez=$result->fetch_array()){
 	$id_nekretnina=$rez['idnekretnina'];
 	}
+
 for($i=0; $i<count($_FILES["img"]["tmp_name"]); $i++)
 {
 	$filetmp=$_FILES["img"]["tmp_name"][$i];
@@ -53,17 +58,30 @@ for($i=0; $i<count($_FILES["img"]["tmp_name"]); $i++)
 $qii="Insert into vlasnik_nekretnine( idnekretnina, korisnik_idkorisnik, korisnik_prijava_idprijava) VALUE ( '$id_nekretnina','$id_korisnika','$id_korisnika')";
 $con->query($qii) ;
 
-echo" <script type=\"text/javascript\">function closeWindow() {
+echo' <script type=\"text/javascript\">function closeWindow() {
     setTimeout(function() {
     window.close();
     },0);
     }
-
+	
     window.onload = closeWindow();
-    </script>";
-$con->close();
+    </script>
+    <META HTTP-EQUIV="refresh" CONTENT="0; URL=http://localhost/piss">';
+$con->close();}
+	else
+	{
+		echo '<script>alert("Broj slika je između 5 i 20!")</script>
+		<META HTTP-EQUIV="refresh" CONTENT="0; URL=http://localhost/piss/dodaj.php">';
+
+	}
+}
+else
+{
+	echo '<script>alert("Sva polja trebaju biti popunjena!")</script>
+	<META HTTP-EQUIV="refresh" CONTENT="0; URL=http://localhost/piss/dodaj.php">';
+}
 
 ?>
 
-<META HTTP-EQUIV="refresh" CONTENT="0; URL=http://localhost/piss">
+
 

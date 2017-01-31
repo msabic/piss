@@ -79,7 +79,7 @@ echo '<h2>'.$row['naziv'].'</h2>';
       </ol>
       <div class="carousel-inner">
       ';
-      $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+      $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$_GET['id']."";
                     $result = $con->query($query);
                     while($rez=$result->fetch_array())
                     {
