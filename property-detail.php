@@ -20,7 +20,7 @@
 
 <?php
   include ("Connect.php");
-  $query = "SELECT idnekretnina, naziv, cijena, slika, naziv FROM `nekretnina` ORDER BY cijena DESC LIMIT 4 ";
+  $query = "SELECT idnekretnina, naziv, cijena,  naziv FROM `nekretnina` ORDER BY cijena DESC LIMIT 4 ";
   $result = $con->query($query);
   while($row = mysqli_fetch_array($result))
     {
@@ -28,10 +28,17 @@
         $naziv = $row['naziv'];
         $n=$row['naziv'];
         $cijena = $row['cijena'];
-        $slika = $row['slika']; 
+       $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $result = $con->query($query);
+                    while($rez=$result->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    } 
 
 echo '
-                <div class="col-lg-4 col-sm-5"><img class="img-responsive img-circle" src="data:image/jpeg;base64,'.base64_encode($slika).'"/></div>
+                <div class="col-lg-4 col-sm-5"><img class="img-responsive img-circle" src="'.$slika.'"/></div>
                 <div class="col-lg-8 col-sm-7">
                   <h5><a href="property-detail.php?id='.$id.'">'.$n.'</a></h5>
                   <p class="price">'.$cijena.' KM</p> </div>
@@ -62,7 +69,7 @@ echo '<h2>'.$row['naziv'].'</h2>';
   <div class="col-lg-8">
   <div class="property-images">
     <!-- Slider Starts -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<?php echo'<div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators hidden-xs">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -71,35 +78,28 @@ echo '<h2>'.$row['naziv'].'</h2>';
         <li data-target="#myCarousel" data-slide-to="3" class=""></li>
       </ol>
       <div class="carousel-inner">
-        <!-- Item 1 -->
-        <div class="item active">
-          <img src="images/properties/4.jpg" class="properties" alt="properties" />
-        </div>
-        <!-- #Item 1 -->
+      ';
+      $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $result = $con->query($query);
+                    while($rez=$result->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
 
-        <!-- Item 2 -->
-        <div class="item">
-          <img src="images/properties/2.jpg" class="properties" alt="properties" />
-         
-        </div>
-        <!-- #Item 2 -->
-
-        <!-- Item 3 -->
-         <div class="item">
-          <img src="images/properties/1.jpg" class="properties" alt="properties" />
-        </div>
-        <!-- #Item 3 -->
-
-        <!-- Item 4 -->
-        <div class="item ">
-          <img src="images/properties/3.jpg" class="properties" alt="properties" />
-          
-        </div>
-        <!-- # Item 4 -->
-      </div>
+                    
+       
+       echo ' <div class="item">
+          <img src="'.$slika.'" class="properties" alt="properties" />
+        </div>';}
+       
+echo '<div class="item active">
+          <img src="'.$slika.'" class="properties" alt="properties" />
+        </div>';
+        
+      echo '</div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div>
+    </div>';?>
 <!-- #Slider Ends -->
 
   </div>

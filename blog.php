@@ -17,18 +17,25 @@
   <!-- blog list -->
   <?php
   include ("Connect.php");
-  $query = "SELECT idnekretnina, naziv, opis, slika FROM `nekretnina` ORDER BY cijena";
+  $query = "SELECT idnekretnina, naziv, opis FROM `nekretnina` ORDER BY cijena";
   $result = $con->query($query);
   while($row = mysqli_fetch_array($result))
     {
         $id = $row['idnekretnina'];
         $naziv = $row['naziv'];
         $opis = $row['opis'];
-        $slika = $row['slika'];
+        $quer = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $resulte = $con->query($quer);
+                    while($rez=$resulte->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    }
         
     
 		  echo '<div class="row">
-                    <div class="col-lg-4 col-sm-4 "><a href="blogdetail.php" class="thumbnail"><img src="data:image/jpeg;base64,'.base64_encode($slika).'"/></a></div>
+                    <div class="col-lg-4 col-sm-4 "><a href="blogdetail.php" class="thumbnail"><img src="'.$slika.'"/></a></div>
                     <div class="col-lg-8 col-sm-8 ">
                     <h3><a href="property-detail.php?id='.$id.'">'. $naziv .'</a></h3>                      
                     <p>'. $opis .'</p>

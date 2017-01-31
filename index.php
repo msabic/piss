@@ -127,18 +127,26 @@ $razina=0;
 
     <?php
       include ("Connect.php");
-      $query = "SELECT idnekretnina, grad, cijena, slika FROM `nekretnina` LIMIT 7";
+      $query = "SELECT idnekretnina, grad, cijena FROM `nekretnina` LIMIT 7";
                 $result = $con->query($query);
+
                 while($row = mysqli_fetch_array($result))
-                  {
+                  { 
                       $id = $row['idnekretnina'];
                       $naziv = $row['grad'];
                       $cijena = $row['cijena'];
-                      $slika = $row['slika']; 
+                     $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $result = $con->query($query);
+                    while($rez=$result->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    }
 
                       echo '
                         <div class="properties">
-                          <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
+                          <div class="image-holder"><img class="img-responsive" src="'.$slika.'"/>
                             
                           </div>
                           <h4><a href="property-detail.php?id='.$id.'">'.$naziv.'</a></h4>

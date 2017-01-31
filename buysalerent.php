@@ -52,7 +52,7 @@ $razina=0;
 
 <?php
   include ("Connect.php");
-  $query = "SELECT idnekretnina, naziv, cijena, slika, naziv FROM `nekretnina` ORDER BY cijena DESC LIMIT 4 ";
+  $query = "SELECT idnekretnina, naziv, cijena, naziv FROM `nekretnina` ORDER BY cijena DESC LIMIT 4 ";
   $result = $con->query($query);
   while($row = mysqli_fetch_array($result))
     {
@@ -60,10 +60,17 @@ $razina=0;
         $naziv = $row['naziv'];
         $n=$row['naziv'];
         $cijena = $row['cijena'];
-        $slika = $row['slika']; 
+       $quer = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $resulte = $con->query($quer);
+                    while($rez=$resulte->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    }
 
 echo '
-                <div class="col-lg-4 col-sm-5"><img class="img-responsive img-circle" src="data:image/jpeg;base64,'.base64_encode($slika).'"/></div>
+                <div class="col-lg-4 col-sm-5"><img class="img-responsive img-circle" src="'.$slika.'"/></div>
                 <div class="col-lg-8 col-sm-7">
                   <h5><a href="property-detail.php?id='.$id.'">'.$n.'</a></h5>
                   <p class="price">'.$cijena.' KM</p> </div>
@@ -100,7 +107,7 @@ echo '
             if($grad!="" && $cijena==0)
             {
 
-              $query = "SELECT idnekretnina, grad, cijena, slika, naziv FROM `nekretnina` WHERE grad = '$grad'";
+              $query = "SELECT idnekretnina, grad, cijena, naziv FROM `nekretnina` WHERE grad = '$grad'";
               $result = $con->query($query);
           while($row = mysqli_fetch_array($result))
             {
@@ -108,11 +115,18 @@ echo '
                 $naziv = $row['grad'];
                 $n=$row['naziv'];
                 $cijena = $row['cijena'];
-                $slika = $row['slika']; 
+                $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $result = $con->query($query);
+                    while($rez=$result->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    }
             echo '
               <div class="col-lg-4 col-sm-6">
               <div class="properties">
-                <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
+                <div class="image-holder"><img class="img-responsive" src="'.$slika.'"/>
                 </div>
                 <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                 <p class="price">Price: '.$cijena.' KM</p>
@@ -125,7 +139,7 @@ echo '
 
             else if($grad=="" && $cijena!=0)
             {
-              $query = "SELECT idnekretnina, grad, cijena, slika, naziv FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2'";
+              $query = "SELECT idnekretnina, grad, cijena, naziv FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2'";
               $result = $con->query($query);
               while($row = mysqli_fetch_array($result))
                 {
@@ -133,11 +147,18 @@ echo '
                     $naziv = $row['grad'];
                     $n=$row['naziv'];
                     $cijena = $row['cijena'];
-                    $slika = $row['slika']; 
+                   $quer = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $resulte = $con->query($quer);
+                    while($rez=$resulte->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    } 
                 echo '
               <div class="col-lg-4 col-sm-6">
               <div class="properties">
-                <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
+                <div class="image-holder"><img class="img-responsive" src="'.$slika.'"/>
                 </div>
                 <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                 <p class="price">Price: '.$cijena.' KM</p>
@@ -149,7 +170,7 @@ echo '
               }
               else if($grad!="" && $cijena!=0)
                 {
-                  $query = "SELECT idnekretnina, grad, cijena, slika FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2' and grad ='$grad'";
+                  $query = "SELECT idnekretnina, grad, cijena FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2' and grad ='$grad'";
                   $result = $con->query($query);
                   while($row = mysqli_fetch_array($result))
                     {
@@ -157,11 +178,18 @@ echo '
                         $naziv = $row['grad'];
                         $n=$row['naziv'];
                         $cijena = $row['cijena'];
-                        $slika = $row['slika']; 
+                        $quer = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $resulte = $con->query($quer);
+                    while($rez=$resulte->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    } 
                     echo '
                   <div class="col-lg-4 col-sm-6">
                   <div class="properties">
-                    <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
+                    <div class="image-holder"><img class="img-responsive" src="'.$slika.'"/>
                     </div>
                     <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                     <p class="price">Price: '.$cijena.' KM</p>
@@ -176,7 +204,7 @@ echo '
 
 
           else {
-          $query = "SELECT idnekretnina, naziv, cijena, slika FROM `nekretnina` ORDER BY cijena";
+          $query = "SELECT idnekretnina, naziv, cijena FROM `nekretnina` ORDER BY cijena";
           $result = $con->query($query);
           while($row = mysqli_fetch_array($result))
             {
@@ -184,11 +212,18 @@ echo '
                 $naziv = $row['naziv'];
                 $n=$row['naziv'];
                 $cijena = $row['cijena'];
-                $slika = $row['slika']; 
+                $quer = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $resulte = $con->query($quer);
+                    while($rez=$resulte->fetch_array())
+                    {
+                    $slika=$rez['lokacija'];
+  
+
+                    } 
             echo '
               <div class="col-lg-4 col-sm-6">
               <div class="properties">
-                <div class="image-holder"><img class="img-responsive" src="data:image/jpeg;base64,'.base64_encode($slika).'"/>
+                <div class="image-holder"><img class="img-responsive" src="'.$slika.'"/>
                 </div>
                 <h4><a href="property-detail.php?id='.$id.'">'.$n.'</a></h4>
                 <p class="price">Price: '.$cijena.' KM</p>
