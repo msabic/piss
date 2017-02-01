@@ -125,6 +125,7 @@ $query = "SELECT * FROM `nekretnina` where idnekretnina=".$_GET['id']." ";
 
 $result = $con->query($query);
 while ($rez=$result->fetch_array()){
+  $id=$rez['idnekretnina'];
   $cijena=$rez['cijena'];
   $broj_katova=$rez['broj_katova'];
   $broj_soba=$rez['broj_soba'];
@@ -141,7 +142,11 @@ while ($rez=$result->fetch_array()){
   /*lokacija*/
   echo '<div><h4><span class="glyphicon glyphicon-map-marker"></span> Location</h4>
 <div class="well"><iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Pulchowk,+Patan,+Central+Region,+Nepal&amp;aq=0&amp;oq=pulch&amp;sll=37.0625,-95.677068&amp;sspn=39.371738,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Pulchowk,+Patan+Dhoka,+Patan,+Bagmati,+Central+Region,+Nepal&amp;ll=27.678236,85.316853&amp;spn=0.001347,0.002642&amp;t=m&amp;z=14&amp;output=embed"></iframe></div>
-  </div></div>';
+  </div>
+
+
+<a class="btn btn-success" href="rezerviraj.php?id='.$id.'">Rezerviraj</a>
+ </div>';
 
  echo '<div class="col-lg-4">
   <div class="col-lg-12  col-sm-6">
@@ -170,7 +175,8 @@ while ($rez=$result->fetch_array()){
       </form>
  </div>         
 </div>
-  </div>'
+  </div>
+  '
 
 
 
