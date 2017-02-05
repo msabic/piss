@@ -115,9 +115,9 @@ echo '
                 $naziv = $row['grad'];
                 $n=$row['naziv'];
                 $cijena = $row['cijena'];
-                $query = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
-                    $result = $con->query($query);
-                    while($rez=$result->fetch_array())
+                $quer = "SELECT `lokacija` FROM `slike` WHERE `nekretnina_idnekretnina`=".$id."";
+                    $resul = $con->query($quer);
+                    while($rez=$resul->fetch_array())
                     {
                     $slika=$rez['lokacija'];
   
@@ -170,7 +170,7 @@ echo '
               }
               else if($grad!="" && $cijena!=0)
                 {
-                  $query = "SELECT idnekretnina, grad, cijena FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2' and grad ='$grad'";
+                  $query = "SELECT idnekretnina, grad, cijena, naziv FROM `nekretnina` WHERE cijena >= '$cijena1' and cijena <= '$cijena2' and grad ='$grad'";
                   $result = $con->query($query);
                   while($row = mysqli_fetch_array($result))
                     {

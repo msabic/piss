@@ -1,7 +1,10 @@
 
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
 
-
-<?php include'header.php';?>
+<?php include('header.php');?>
 <div class="inside-banner">
   <div class="container"> 
     <span class="pull-right"><a href="localhost/piss">Home</a> / Register</span>
@@ -10,7 +13,16 @@
 </div>
 </div>
 
-
+<?php
+if (isset($_COOKIE['uname'])){
+$prijavljen=true;
+$razina=$_COOKIE['razina'];
+}
+else {
+$prijavljen=false;
+$razina=0;
+}
+?>
 <div class="container">
 <div class="spacer">
 <div class="row register">
@@ -50,20 +62,22 @@ while($rez=$resulteee->fetch_array())
 	$slika=$rez['lokacija'];
 
 }
-echo '
-<img src="'.$slika.'"/>
-<h4>Vlasnik kuće '.$naziv.' je '.$ime.' '.$prezime.' za više informacija možete se javiti na broj 0'.$tel.' ili na email adresu '.$email.'</h4><br>
-<h3>Pojedinosti o kući</h3><br>
-<h4>Kvadratura: '.$kvadratura.'</h4>
-<h4>Broj katova: '.$broj_katova.'</h4>
-<h4>Broj soba: '.$broj_soba.'</h4>';
+
+
 
 ?>
 
 <?php
 
 
-
+echo'<h4>Odaberite datum od kad do kad želite rezervirati kuću!</h4>
+<div>
+    <form action="rezervacija.php" method="GET">
+    <input type="date" class="form-control" name="pocetak"/>
+    <input type="date" class="form-control" name="kraj"/>
+    <input type="hidden" name="idnek" value="'.$id.'"/>
+    <button class="btn btn-success" type="submit">Rezerviraj</button></form>
+</div>';
 
 
 echo '
@@ -79,20 +93,36 @@ echo '
     ';
 
 
-echo'
-  <div id="kalendar">
-      <script type="text/javascript">
-        $("#kalendar").multiDatesPicker({
-        maxPicks: 2,
-        minDate: 0
-        });
+$lista_datuma=['02/02/2017','03/02/2017'];
+
+
+function datumi($niz) {
+    $z = "";
+    $j=count($niz);
+    for($i = 0; $i<$j;$i++){
+        $z = $z ."'". $niz[$i]."'".",";
+    }
+    $z = rtrim($z , ",");
+    return $z;
+}
+echo"
+  <div id='kalendar'>
+      <script type='text/javascript'>
+      var date = new Date();
+       $('#kalendar').multiDatesPicker({
+    addDisabledDates: [".datumi($lista_datuma)."]   
+});
       </script>
+
       
-  </div>';
+  </div>";
+  echo'<div>';include("plati.php");echo'</div>';
+
+
 ?>
 
 </div>
 </div>
 </div>
 
-<?php include'footer.php';?>
+<?php include('footer.php');?>

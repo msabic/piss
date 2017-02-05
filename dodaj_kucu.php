@@ -28,7 +28,7 @@ $id_nekretnina=0;
 $email=$_COOKIE['uname'];
 if($naziv!="" && $adresa!="" && $grad!="" && $kvadratura!="" && $cijena!="" && $br_katova!="" && $br_kvadrata!="" && $form_message!="")
 {
-	if((count($_FILES["img"]["tmp_name"])>5 && count($_FILES["img"]["tmp_name"]<20)))
+	if((count($_FILES["img"]["tmp_name"])>=5 && count($_FILES["img"]["tmp_name"]<=20)))
 	{
 $qiii="SELECT * FROM korisnik WHERE email='$email'";
 $result=$con->query($qiii);
