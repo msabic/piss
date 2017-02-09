@@ -17,7 +17,7 @@ echo '
     <div class="row">
         <!-- You can make it whatever width you want. Im making it full width
              on <= small devices and 4/12 page width on >= medium devices -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
         
         
             <!-- CREDIT CARD FORM STARTS HERE -->

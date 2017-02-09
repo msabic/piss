@@ -51,11 +51,11 @@ $razina=0;
                 <input type="number" class="form-control" placeholder="Cijena po danu" name="cijena">
                 <input type="number" class="form-control" placeholder="Broj katova" name="br_katova">
                 <input type="number" class="form-control" placeholder="Broj Soba" name="br_soba">
-                <label><input type="radio" name="bazen"> Bazen </label>
+                <label><input type="radio" name="bazen"><span style=" float: right; padding-top: 18px; padding-left: 8px; "> Bazen</span> </label>
                 <textarea rows="6" class="form-control" placeholder="Opišite kuću" name="form_message"></textarea>
 
 
-  Odaberite slike: <input type="file" name="img[]" multiple >
+      Odaberite slike: <input type="file" name="img[]" multiple >
 
       <button type="submit" class="btn btn-success" name="Submit">Register</button></form>'?>
           
