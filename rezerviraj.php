@@ -1,6 +1,7 @@
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
 
@@ -79,12 +80,12 @@ echo '<h4>Odaberite datum od kad do kad želite rezervirati kuću!</h4>
     <input type="date" class="form-control" name="kraj"/>
     <input type="hidden" name="idnek" value="'.$id.'"/>
      
-<div style="float: left;">
+<div style="float: left; width: 25%;">
      <div id="kalendar" >
       <script type="text/javascript">
       var date = new Date();
        $("#kalendar").multiDatesPicker({
-    addDisabledDates: [".datumi($lista_datuma)."]   
+    addDisabledDates: [".datumi($lista_datuma)."]  
 });
       </script>
 

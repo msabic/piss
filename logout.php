@@ -1,3 +1,13 @@
+<?php
+if (isset($_COOKIE['uname'])){
+$prijavljen=true;
+$razina=$_COOKIE['razina'];
+}
+else {
+$prijavljen=false;
+$razina=0;
+}
+?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 				<?php
 					if (isset($_COOKIE['uname'])){

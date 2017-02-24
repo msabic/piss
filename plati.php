@@ -1,3 +1,13 @@
+<?php
+if (isset($_COOKIE['uname'])){
+$prijavljen=true;
+$razina=$_COOKIE['razina'];
+}
+else {
+$prijavljen=false;
+$razina=0;
+}
+?>
 <script type="text/javascript" src="js.js"></script>
 <link rel="newest stylesheet" href="css.css" />
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
